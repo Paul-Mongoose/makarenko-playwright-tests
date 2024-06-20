@@ -1,0 +1,21 @@
+{
+  "name": "playwrite-ui-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test -c tests",
+    "tests-examples": "playwright test -c tests-examples"
+  },
+  "keywords": [],
+  "author": "Pavlo Makarenko",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.5.0",
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.12.12",
+    "eslint": "^9.5.0",
+    "globals": "^15.5.0",
+    "typescript-eslint": "^7.13.0"
+  }
+}
