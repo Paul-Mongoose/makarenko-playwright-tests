@@ -1,13 +1,12 @@
-import {  test as baseTest } from '@playwright/test';
-import {Header} from "../pageFactory/header";
+import { test as baseTest } from '@playwright/test';
+import { HeaderPage } from '../pageFactory/headerPage';
 
 const test = baseTest.extend<{
-    header: Header;
+  headerPage: HeaderPage;
 }>({
-
-    header: async ({ page }, use) => {
-        await use(new Header(page));
-    },
-})
+  headerPage: async ({ page }, use) => {
+    await use(new HeaderPage(page));
+  },
+});
 
 export default test;
