@@ -1,4 +1,4 @@
-import {expect, type Page} from '@playwright/test';
+import {expect} from '@playwright/test';
 import test from '@lib/BaseTest';
 import {USER} from "../data/users";
 import {URLS} from "../data/urls";
@@ -30,7 +30,7 @@ test.describe('Localizify', () => {
         await expect(header.USER_NAME_DISPLAY).toHaveText(USER.name);
     });
 
-    test('C2 Login | Error | Wrong password', async ({page, header}) => {
+    test('C2 Login | Error | Wrong password', async ({ header}) => {
         // Arrange
         await header.LOGIN_BUTTON.click();
         await header.INPUT_LOGIN_EMAIL.fill(USER.login);
@@ -45,7 +45,7 @@ test.describe('Localizify', () => {
 
     });
 
-    test('C3 Logout', async ({page, header}) => {
+    test('C3 Logout', async ({ header}) => {
         // Arrange
         await header.loginToApplication();
         await header.USER_NAME_DISPLAY.hover();
@@ -73,19 +73,4 @@ test.describe('Localizify', () => {
             'Logout'
         ]);
     });
-
-    test('C2', async ({page, header}) => {
-        // Create 1st todo.
-        // await plateOrVinNumber.fill("KA0167BI");
-        // await page.screenshot({ path: 'example.png' });
-        // const submitButton = await searchForm.$('button[type="submit"]');
-        // await submitButton.click();
-        //
-        // // Make sure the list only has one todo item.
-        // await page.screenshot({ path: 'example.png' });
-        //
-        // const carTitle = await page.$('h1.car-title');
-        // await page.screenshot({ path: 'example.png' });
-        // await expect(await carTitle.textContent()).toBe(" NISSAN ROGUE, 2018 KA 0167 BIinfo ")
-    })
 });

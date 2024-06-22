@@ -3,19 +3,28 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run eslint"
+    }
+  },
   "scripts": {
     "test": "playwright test -c tests",
-    "tests-examples": "playwright test -c tests-examples"
+    "eslint": "eslint . --ext .ts",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "Pavlo Makarenko",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/js": "^9.5.0",
     "@playwright/test": "^1.44.0",
     "@types/node": "^20.12.12",
-    "eslint": "^9.5.0",
-    "globals": "^15.5.0",
-    "typescript-eslint": "^7.13.0"
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "eslint": "^8.57.0",
+    "globals": "^15.5.0"
+  },
+  "dependencies": {
+    "husky": "^9.0.11"
   }
 }
