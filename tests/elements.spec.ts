@@ -1,8 +1,9 @@
 import { expect } from '@playwright/test';
 import test from '@lib/BaseTest';
+import { URLS } from '../data/urls';
 
-test.beforeAll(async ({ page, headerPage }) => {
-  await page.goto('https://localizify.com');
+test.beforeEach(async ({ page, headerPage }) => {
+  await page.goto(URLS.base);
   await headerPage.loginToApplication();
 });
 
@@ -22,8 +23,5 @@ test.describe('Localizify: test elements', () => {
       'Settings',
       'Logout',
     ]);
-
-    // Test login request
-    // Test user name in header after login
   });
 });

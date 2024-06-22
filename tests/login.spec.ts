@@ -4,7 +4,7 @@ import { USER } from '../data/users';
 import { URLS } from '../data/urls';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://localizify.com');
+  await page.goto(URLS.base);
 });
 
 test.describe('Localizify', () => {
@@ -61,12 +61,15 @@ test.describe('Localizify', () => {
     await expect(headerPage.LOGIN_BUTTON).toBeEnabled();
   });
 
-  test('C4 Test menu', async ({ page, headerPage }) => {
+  test('C4 Test menu', async ({ headerPage }) => {
+    // Arrange
     await headerPage.loginToApplication();
-    await headerPage.USER_NAME_DISPLAY.hover();
 
-    await page.screenshot({ path: 'example.png' });
+    // Act
+    await headerPage.USER_NAME_DISPLAY.hover();
     const menu = headerPage.MENU_DROPDOWN.getByRole('listitem');
+
+    // Assert
     await expect(menu).toHaveCount(8);
     await expect(menu).toContainText([
       'My profile',
