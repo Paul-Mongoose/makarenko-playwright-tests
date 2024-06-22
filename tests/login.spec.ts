@@ -45,7 +45,7 @@ test.describe('Localizify', () => {
 
     });
 
-    test('C3 Logout', async ({ header, page}) => {
+    test('C3 Logout', async ({ header}) => {
         // Arrange
         await header.loginToApplication();
         await header.USER_NAME_DISPLAY.hover();
