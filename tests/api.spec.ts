@@ -4,13 +4,9 @@ import { USER } from '../data';
 import { userDataSchema, verifyJoiSchemas } from '../utils';
 
 test.describe('Localizify Api tests', () => {
-  let serviceApi: ServiceApi;
+  const serviceApi = new ServiceApi();
 
-  test.beforeEach(async ({ page }) => {
-    serviceApi = new ServiceApi(page);
-  });
-
-  test('CAPI-1 Login | Success', async () => {
+  test('C-API-1 Login | Success', async () => {
     // Act
     const response = await serviceApi.login(USER);
 
