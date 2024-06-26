@@ -1,6 +1,6 @@
 import { Locator } from 'playwright-core';
 import { expect, Page } from '@playwright/test';
-import { USER } from '../data/users';
+import { USER } from '../data';
 
 export class HeaderPage {
   public headerElement: Locator;
@@ -28,10 +28,8 @@ export class HeaderPage {
   public MENU_LOGOUT_BUTTON: Locator;
 
   constructor(page: Page) {
-    this.headerElement = page.locator('.container');
-    this.LANGUAGE_BUTTON = this.headerElement
-      .getByRole('button')
-      .locator('.localization');
+    this.headerElement = page.locator('site-header .container');
+    this.LANGUAGE_BUTTON = this.headerElement.locator('.localization');
     this.LOGIN_BUTTON = this.headerElement
       .locator('.login-container')
       .getByRole('button', { name: /Login/i });
@@ -86,8 +84,13 @@ export class HeaderPage {
 
   async loginToApplication(user = USER) {
     await this.LOGIN_BUTTON.click();
-    await this.INPUT_LOGIN_EMAIL.fill(user.login);
+    await this.INPUT_LOGIN_EMAIL.fill(user.email);
     await this.INPUT_LOGIN_PASSWORD.fill(user.password);
     await this.LOGIN_MODAL_BUTTON.click();
+  }
+
+  async languageButtonClick() {
+    await this.LANGUAGE_BUTTON.click();
+    await this.MENU_DROPDOWN.getByRole('listitem').isVisible();
   }
 }

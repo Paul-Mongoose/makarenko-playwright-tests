@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import test from '@lib/BaseTest';
-import { USER } from '../data/users';
-import { URLS } from '../data/urls';
+import { LANGUAGES, USER, MAIN_PAGE_H1_TEXT, URLS } from '../data';
 
 test.beforeEach(async ({ page }) => {
   await page.goto(URLS.base);
@@ -12,7 +11,7 @@ test.describe('Localizify', () => {
     // Arrange
     await headerPage.LOGIN_BUTTON.click();
     await headerPage.verifyModalLoginButton(true);
-    await headerPage.INPUT_LOGIN_EMAIL.fill(USER.login);
+    await headerPage.INPUT_LOGIN_EMAIL.fill(USER.email);
     await headerPage.INPUT_LOGIN_PASSWORD.fill(USER.password);
     await headerPage.verifyModalLoginButton(false);
 
@@ -24,7 +23,7 @@ test.describe('Localizify', () => {
     // Assert
     // Test login request
     expect((await loginRequestPromise).postData()).toBe(
-      `{"email":"${USER.login}","password":"${USER.password}"}`,
+      `{"email":"${USER.email}","password":"${USER.password}"}`,
     );
 
     // Test the user is logged
@@ -34,7 +33,7 @@ test.describe('Localizify', () => {
   test('C2 Login | Error | Wrong password', async ({ headerPage }) => {
     // Arrange
     await headerPage.LOGIN_BUTTON.click();
-    await headerPage.INPUT_LOGIN_EMAIL.fill(USER.login);
+    await headerPage.INPUT_LOGIN_EMAIL.fill(USER.email);
     await headerPage.INPUT_LOGIN_PASSWORD.fill('1234567');
 
     // Act
@@ -61,24 +60,24 @@ test.describe('Localizify', () => {
     await expect(headerPage.LOGIN_BUTTON).toBeEnabled();
   });
 
-  test('C4 Test menu', async ({ headerPage }) => {
+  test('C4 Change localization | ENG -> UK', async ({
+    headerPage,
+    mainPage,
+    page,
+  }) => {
     // Arrange
-    await headerPage.loginToApplication();
+    await headerPage.languageButtonClick();
+    await page.screenshot({ path: 'example.png' });
+    await mainPage.checkH1Title(MAIN_PAGE_H1_TEXT.EN);
 
     // Act
-    await headerPage.USER_NAME_DISPLAY.hover();
-    const menu = headerPage.MENU_DROPDOWN.getByRole('listitem');
+    await headerPage.MENU_DROPDOWN.getByRole('listitem')
+      .filter({ hasText: LANGUAGES.UK })
+      .click();
+
+    await page.screenshot({ path: 'example.png' });
 
     // Assert
-    await expect(menu).toHaveCount(8);
-    await expect(menu).toContainText([
-      'My profile',
-      'AT Balance',
-      'Orders',
-      'Statistics',
-      'Special tariffs',
-      'Settings',
-      'Logout',
-    ]);
+    await mainPage.checkH1Title(MAIN_PAGE_H1_TEXT.UK);
   });
 });
