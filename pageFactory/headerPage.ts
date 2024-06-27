@@ -3,29 +3,29 @@ import { expect, Page } from '@playwright/test';
 import { USER } from '../data';
 
 export class HeaderPage {
-  public headerElement: Locator;
-  public LOGIN_BUTTON: Locator;
-  public LANGUAGE_BUTTON: Locator;
+  headerElement: Locator;
+  LOGIN_BUTTON: Locator;
+  LANGUAGE_BUTTON: Locator;
 
-  public loginModal: Locator;
-  public LOGIN_MODAL_BUTTON: Locator;
-  public INPUT_LOGIN_EMAIL: Locator;
-  public INPUT_LOGIN_PASSWORD: Locator;
-  public USER_NAME_DISPLAY: Locator;
+  loginModal: Locator;
+  LOGIN_MODAL_BUTTON: Locator;
+  INPUT_LOGIN_EMAIL: Locator;
+  INPUT_LOGIN_PASSWORD: Locator;
+  USER_NAME_DISPLAY: Locator;
 
-  public loginModalErrorField: Locator;
-  public LOGIN_MODAL_ERROR_MESSAGE: Locator;
-  public LOGIN_MODAL_ERROR_DESCRIPTION: Locator;
+  loginModalErrorField: Locator;
+  LOGIN_MODAL_ERROR_MESSAGE: Locator;
+  LOGIN_MODAL_ERROR_DESCRIPTION: Locator;
 
-  public MENU_DROPDOWN: Locator;
-  public MENU_PROJECTS_BUTTON: Locator;
-  public MENU_PROFILE_BUTTON: Locator;
-  public MENU_BALANCE_BUTTON: Locator;
-  public MENU_ORDERS_BUTTON: Locator;
-  public MENU_STATISTIC_BUTTON: Locator;
-  public MENU_TARIFFS_BUTTON: Locator;
-  public MENU_SETTINGS_BUTTON: Locator;
-  public MENU_LOGOUT_BUTTON: Locator;
+  MENU_DROPDOWN: Locator;
+  MENU_PROJECTS_BUTTON: Locator;
+  MENU_PROFILE_BUTTON: Locator;
+  MENU_BALANCE_BUTTON: Locator;
+  MENU_ORDERS_BUTTON: Locator;
+  MENU_STATISTIC_BUTTON: Locator;
+  MENU_TARIFFS_BUTTON: Locator;
+  MENU_SETTINGS_BUTTON: Locator;
+  MENU_LOGOUT_BUTTON: Locator;
 
   constructor(page: Page) {
     this.headerElement = page.locator('site-header .container');

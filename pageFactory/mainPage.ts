@@ -2,13 +2,13 @@ import { Locator } from '@playwright/test';
 import { expect, Page } from '@playwright/test';
 
 export class MainPage {
-  public H1_TITLE: Locator;
+  H1_TITLE: Locator;
 
   constructor(page: Page) {
     this.H1_TITLE = page.locator('h1');
   }
 
   async checkH1Title(title: string) {
-    await expect(this.H1_TITLE, 'H1 text must be ahother').toContainText(title);
+    await expect(this.H1_TITLE, 'H1 text must be another').toContainText(title);
   }
 }

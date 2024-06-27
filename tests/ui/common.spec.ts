@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import test from '@lib/BaseTest';
-import { LANGUAGES, USER, MAIN_PAGE_H1_TEXT, URLS } from '../data';
+import { LANGUAGES, USER, MAIN_PAGE_H1_TEXT, URLS } from '@data/index';
 
 test.beforeEach(async ({ page }) => {
   await page.goto(URLS.base);

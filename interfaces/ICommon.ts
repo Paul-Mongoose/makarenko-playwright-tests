@@ -7,6 +7,7 @@ export interface IResponse {
   status: number;
   body: object;
   url: string;
+  headers: { [key: string]: string };
 }
 
 export interface IUserResponseData {

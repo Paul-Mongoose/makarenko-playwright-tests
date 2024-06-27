@@ -7,6 +7,7 @@ export async function parseResponse(response: APIResponse): Promise<IResponse> {
     status: response.status(),
     body: await response.json(),
     url: response.url(),
+    headers: response.headers(),
   };
 }
 
