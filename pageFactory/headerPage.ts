@@ -4,8 +4,9 @@ import { USER } from '../data';
 
 export class HeaderPage {
   headerElement: Locator;
-  LOGIN_BUTTON: Locator;
+  PROJECTS_BUTTON: Locator;
   LANGUAGE_BUTTON: Locator;
+  LOGIN_BUTTON: Locator;
 
   loginModal: Locator;
   LOGIN_MODAL_BUTTON: Locator;
@@ -29,6 +30,9 @@ export class HeaderPage {
 
   constructor(page: Page) {
     this.headerElement = page.locator('site-header .container');
+    this.PROJECTS_BUTTON = this.headerElement.locator(
+      'li.ant-menu-item a[href="/projects"]',
+    );
     this.LANGUAGE_BUTTON = this.headerElement.locator('.localization');
     this.LOGIN_BUTTON = this.headerElement
       .locator('.login-container')

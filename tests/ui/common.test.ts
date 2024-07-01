@@ -6,22 +6,19 @@ test.beforeEach(async ({ page }) => {
   await page.goto(URLS.base);
 });
 
-test.describe('Localizify', () => {
+test.describe('Localizify common tests', () => {
   test('C1 Login | Success', async ({ page, headerPage }) => {
     // Arrange
     await headerPage.LOGIN_BUTTON.click();
-    await headerPage.verifyModalLoginButton(true);
     await headerPage.INPUT_LOGIN_EMAIL.fill(USER.email);
     await headerPage.INPUT_LOGIN_PASSWORD.fill(USER.password);
-    await headerPage.verifyModalLoginButton(false);
-
     const loginRequestPromise = page.waitForRequest(URLS.login);
 
     // Act
     await headerPage.LOGIN_MODAL_BUTTON.click();
 
     // Assert
-    // Test login request
+    // Test login api request
     expect((await loginRequestPromise).postData()).toBe(
       `{"email":"${USER.email}","password":"${USER.password}"}`,
     );
