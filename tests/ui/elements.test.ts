@@ -21,13 +21,12 @@ test.describe('Localizify: test elements', () => {
     await mainPage.verifyModalLoginButton(false);
   });
 
-  test('CE1 Test profile menu list', async ({ page, mainPage }) => {
+  test('CE1 Test profile menu list', async ({ mainPage }) => {
     // Arrange
     await mainPage.loginToApplication();
 
     // Act
     await mainPage.USER_NAME_DISPLAY.hover();
-    await page.screenshot({ path: 'example.png' });
 
     // Assert
     const menu = mainPage.HEADER_MENU_DROPDOWN;

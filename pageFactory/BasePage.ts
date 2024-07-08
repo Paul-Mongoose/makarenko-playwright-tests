@@ -103,6 +103,6 @@ export class BasePage {
 
   async languageButtonClick() {
     await this.LANGUAGE_BUTTON.click();
-    await this.HEADER_MENU_DROPDOWN.getByRole('listitem').isVisible();
+    await this.HEADER_MENU_DROPDOWN.isVisible();
   }
 }

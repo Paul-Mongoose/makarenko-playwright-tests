@@ -57,18 +57,15 @@ test.describe('Localizify common tests', () => {
     await expect(mainPage.LOGIN_BUTTON).toBeEnabled();
   });
 
-  test('C4 Change localization | ENG -> UK', async ({ mainPage, page }) => {
+  test('C4 Change localization | ENG -> UK', async ({ mainPage }) => {
     // Arrange
     await mainPage.languageButtonClick();
-    await page.screenshot({ path: 'example.png' });
     await mainPage.checkH1Title(MAIN_PAGE_H1_TEXT.EN);
 
     // Act
     await mainPage.HEADER_MENU_DROPDOWN.filter({
       hasText: LANGUAGES.UK,
     }).click();
-
-    await page.screenshot({ path: 'example.png' });
 
     // Assert
     await mainPage.checkH1Title(MAIN_PAGE_H1_TEXT.UK);
