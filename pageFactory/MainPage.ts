@@ -1,9 +1,11 @@
 import { Locator } from '@playwright/test';
-import { expect, Page } from '@playwright/test';
-import { BasePage } from './BasePage';
+import { Page } from '@playwright/test';
+import { HeaderPage } from './HeaderPage';
 import { URLS } from '@data/urls.data';
+import { LOCALIZATION } from '@data/enums.data';
+import { MAIN_PAGE_H1_TEXT } from '@data/localization.data';
 
-export class MainPage extends BasePage {
+export class MainPage extends HeaderPage {
   H1_TITLE: Locator;
 
   constructor(page: Page) {
@@ -14,8 +16,14 @@ export class MainPage extends BasePage {
   async goto() {
     await this.page.goto(URLS.base);
   }
-
-  async checkH1Title(title: string) {
-    await expect(this.H1_TITLE, 'H1 text must be another').toContainText(title);
+  async checkLocalization(
+    localization: LOCALIZATION,
+    locator = this.H1_TITLE,
+  ): Promise<void> {
+    await this.checkTextContain(
+      locator,
+      MAIN_PAGE_H1_TEXT[localization],
+      'Header button PROJECTS mus have another title',
+    );
   }
 }
