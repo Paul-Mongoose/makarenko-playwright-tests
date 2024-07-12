@@ -8,7 +8,7 @@ test.beforeEach(async ({ mainPage }) => {
 });
 
 test.describe('Network mocking', async () => {
-  test.only('MTC-01 Mocking user info request | 200 | Changing field "Tariff plan"', async ({
+  test('MTC-01 Mocking user info request | 200 | Changing field "Tariff plan"', async ({
     page,
     mainPage,
   }) => {
