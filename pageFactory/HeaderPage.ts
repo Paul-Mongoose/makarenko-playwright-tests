@@ -9,6 +9,7 @@ export class HeaderPage extends BasePage {
   LANGUAGE_BUTTON: Locator;
   LOGIN_BUTTON: Locator;
   USER_NAME_DISPLAY: Locator;
+  TARIFF_PLAN_DISPLAY: Locator;
 
   private HEADER_LOGIN_MODAL: Locator;
   LOGIN_MODAL_BUTTON: Locator;
@@ -43,6 +44,7 @@ export class HeaderPage extends BasePage {
       '.login-container',
     ).getByRole('button', { name: /Login/i });
     this.USER_NAME_DISPLAY = this.HEADER_ELEMENT.locator('.username');
+    this.TARIFF_PLAN_DISPLAY = this.HEADER_ELEMENT.locator('.plan');
 
     // Login modal window
     this.HEADER_LOGIN_MODAL = this.page.getByRole('document');
@@ -103,6 +105,11 @@ export class HeaderPage extends BasePage {
     await this.INPUT_LOGIN_EMAIL.fill(user.email);
     await this.INPUT_LOGIN_PASSWORD.fill(user.password);
     await this.LOGIN_MODAL_BUTTON.click();
+  }
+
+  async loginAndCheck(user = USER) {
+    await this.loginToApplication(user);
+    await expect(this.USER_NAME_DISPLAY).toHaveText(USER.name);
   }
 
   async languageButtonClick() {
