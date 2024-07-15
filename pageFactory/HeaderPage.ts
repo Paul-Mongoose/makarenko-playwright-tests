@@ -11,7 +11,7 @@ export class HeaderPage extends BasePage {
   USER_NAME_DISPLAY: Locator;
   TARIFF_PLAN_DISPLAY: Locator;
 
-  private HEADER_LOGIN_MODAL: Locator;
+  HEADER_LOGIN_MODAL: Locator;
   LOGIN_MODAL_BUTTON: Locator;
   INPUT_LOGIN_EMAIL: Locator;
   INPUT_LOGIN_PASSWORD: Locator;
@@ -47,9 +47,9 @@ export class HeaderPage extends BasePage {
     this.TARIFF_PLAN_DISPLAY = this.HEADER_ELEMENT.locator('.plan');
 
     // Login modal window
-    this.HEADER_LOGIN_MODAL = this.page.getByRole('document');
+    this.HEADER_LOGIN_MODAL = this.page.locator('.ant-modal-content');
     this.LOGIN_MODAL_BUTTON = this.HEADER_LOGIN_MODAL.locator(
-      '#cdk-overlay-1',
+      '.actions',
     ).getByRole('button', { name: /Login/i });
     this.INPUT_LOGIN_EMAIL = this.HEADER_LOGIN_MODAL.locator(
       'input[name="email"]',

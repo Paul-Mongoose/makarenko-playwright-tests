@@ -8,7 +8,7 @@ test.beforeEach(async ({ mainPage }) => {
 });
 
 test.describe('Localizify: test elements', () => {
-  test('CE0 Login modal window | Button "Login"', async ({ mainPage }) => {
+  test('CE-0 Login modal window | Button "Login"', async ({ mainPage }) => {
     // Arrange
     await mainPage.LOGIN_BUTTON.click();
     await mainPage.verifyModalLoginButton(true);
@@ -18,6 +18,9 @@ test.describe('Localizify: test elements', () => {
     await mainPage.INPUT_LOGIN_PASSWORD.fill(USER.password);
 
     // Assert
+    await mainPage.HEADER_LOGIN_MODAL.screenshot({
+      path: './screenshots/elements/case-CE-0.png',
+    });
     await mainPage.verifyModalLoginButton(false);
   });
 
@@ -34,7 +37,7 @@ test.describe('Localizify: test elements', () => {
     await expect(menu).toContainText(Object.values(MENU_ITEMS.EN));
   });
 
-  test('CE2 Test localization list', async ({ mainPage }) => {
+  test('CE-2 Test localization list', async ({ mainPage }) => {
     // Act
     await mainPage.LANGUAGE_BUTTON.click();
 
@@ -44,7 +47,7 @@ test.describe('Localizify: test elements', () => {
     await expect(menu).toContainText(Object.values(LANGUAGES));
   });
 
-  test('CE3 Test header menu buttons | Project - button | Hover - change color', async ({
+  test('CE-3 Test header menu buttons | Project - button | Hover - change color', async ({
     mainPage,
   }) => {
     // Arrange
