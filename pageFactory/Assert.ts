@@ -1,17 +1,8 @@
-import { expect, Page } from '@playwright/test';
+import { expect } from '@playwright/test';
 import { Locator } from 'playwright-core';
 import { LOCALIZATION } from '@data/enums.data';
 
-export class BasePage {
-  page: Page;
-  constructor(page: Page) {
-    this.page = page;
-  }
-
-  async goto() {
-    console.log('This function must be overridden for page');
-  }
-
+export abstract class Assert {
   async checkTextContain(
     locator: Locator,
     expectedTitle: string,
