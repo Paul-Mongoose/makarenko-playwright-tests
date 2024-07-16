@@ -1,11 +1,11 @@
 import { URLS } from '../../data/urls.data';
 import { LOCALIZATION } from '../../data/enums.data';
 import { MAIN_PAGE_H1_TEXT } from '../../data/localization.data';
-import { BasePage } from './BasePage';
-import { Header } from '../component';
+import { HeaderComponent } from '../component';
+import { BasePage } from '../abstractClasses';
 
 export class MainPage extends BasePage {
-  header = new Header(this.page);
+  header = new HeaderComponent(this.page);
   H1_TITLE = this.page.locator('h1');
 
   async goto() {

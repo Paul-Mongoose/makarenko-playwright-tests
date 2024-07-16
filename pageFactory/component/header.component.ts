@@ -1,8 +1,8 @@
 import { expect } from '@playwright/test';
 import { HEADER_BUTTONS, LANGUAGES, LOCALIZATION, USER } from '../../data';
-import { Component } from './Component';
+import { Component } from '../abstractClasses';
 
-export class Header extends Component {
+export class HeaderComponent extends Component {
   private HEADER_ELEMENT = this.page.locator('site-header .container');
   PROJECTS_BUTTON = this.HEADER_ELEMENT.locator(
     'li.ant-menu-item a[routerlink="/projects"]',
