@@ -32,13 +32,13 @@ test.describe('Network mocking', async () => {
     await mockResponse(page, URLS.getUserInfo, responseBody, 200);
 
     // Act
-    await mainPage.loginAndCheck();
+    await mainPage.header.loginAndCheck();
 
     // Assert
     await page.screenshot({
       path: './screenshots/network-mocking/case-MTC-01.png',
     });
-    await expect(mainPage.TARIFF_PLAN_DISPLAY).toHaveText(
+    await expect(mainPage.header.TARIFF_PLAN_DISPLAY).toHaveText(
       'Tariff plan: Modified response',
     );
   });

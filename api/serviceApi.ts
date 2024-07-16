@@ -1,24 +1,11 @@
 import { URLS } from '@data/urls.data';
 import { ILoginBody, IResponse } from '@interfaces/ICommon';
-import { APIRequestContext, request, APIResponse } from '@playwright/test';
-
-export async function parseResponse(response: APIResponse): Promise<IResponse> {
-  return {
-    status: response.status(),
-    body: await response.json(),
-    url: response.url(),
-    headers: response.headers(),
-  };
-}
+import { APIRequestContext, request } from '@playwright/test';
+import { parseResponse } from '../utils';
 
 export class ServiceApi {
-  private baseUrl: string;
-  private contextRequest: Promise<APIRequestContext>;
-
-  constructor() {
-    this.baseUrl = URLS.base;
-    this.contextRequest = this.initialize();
-  }
+  private baseUrl = URLS.base;
+  private contextRequest = this.initialize();
 
   private async initialize(): Promise<APIRequestContext> {
     return await request.newContext();

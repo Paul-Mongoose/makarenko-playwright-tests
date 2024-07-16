@@ -10,58 +10,58 @@ test.beforeEach(async ({ mainPage }) => {
 test.describe('Localizify: test elements', () => {
   test('CE-0 Login modal window | Button "Login"', async ({ mainPage }) => {
     // Arrange
-    await mainPage.LOGIN_BUTTON.click();
-    await mainPage.verifyModalLoginButton(true);
+    await mainPage.header.LOGIN_BUTTON.click();
+    await mainPage.header.verifyModalLoginButton(true);
 
     // Act
-    await mainPage.INPUT_LOGIN_EMAIL.fill(USER.email);
-    await mainPage.INPUT_LOGIN_PASSWORD.fill(USER.password);
+    await mainPage.header.INPUT_LOGIN_EMAIL.fill(USER.email);
+    await mainPage.header.INPUT_LOGIN_PASSWORD.fill(USER.password);
 
     // Assert
-    await mainPage.HEADER_LOGIN_MODAL.screenshot({
+    await mainPage.header.HEADER_LOGIN_MODAL.screenshot({
       path: './screenshots/elements/case-CE-0.png',
     });
-    await mainPage.verifyModalLoginButton(false);
+    await mainPage.header.verifyModalLoginButton(false);
   });
 
   test('CE1 Test profile menu list', async ({ mainPage }) => {
     // Arrange
-    await mainPage.loginToApplication();
+    await mainPage.header.loginToApplication();
 
     // Act
-    await mainPage.USER_NAME_DISPLAY.hover();
+    await mainPage.header.USER_NAME_DISPLAY.hover();
 
     // Assert
-    const menu = mainPage.HEADER_MENU_DROPDOWN;
-    await expect(menu).toHaveCount(8);
-    await expect(menu).toContainText(Object.values(MENU_ITEMS.EN));
+    const menuDropdown = mainPage.header.HEADER_MENU_DROPDOWN;
+    await expect(menuDropdown).toHaveCount(8);
+    await expect(menuDropdown).toContainText(Object.values(MENU_ITEMS.EN));
   });
 
   test('CE-2 Test localization list', async ({ mainPage }) => {
     // Act
-    await mainPage.LANGUAGE_BUTTON.click();
+    await mainPage.header.LANGUAGE_BUTTON.click();
 
     // Assert
-    const menu = mainPage.HEADER_MENU_DROPDOWN;
-    await expect(menu).toHaveCount(3);
-    await expect(menu).toContainText(Object.values(LANGUAGES));
+    const menuDropdown = mainPage.header.HEADER_MENU_DROPDOWN;
+    await expect(menuDropdown).toHaveCount(3);
+    await expect(menuDropdown).toContainText(Object.values(LANGUAGES));
   });
 
   test('CE-3 Test header menu buttons | Project - button | Hover - change color', async ({
     mainPage,
   }) => {
     // Arrange
-    const button = mainPage.PROJECTS_BUTTON;
-    const initialColor = await getElementColor(button);
+    const projectButton = mainPage.header.PROJECTS_BUTTON;
+    const initialColor = await getElementColor(projectButton);
 
     // Act
-    await button.hover();
+    await projectButton.hover();
 
     // Assert
     await expect
       .poll(
         async () => {
-          return await getElementColor(button);
+          return await getElementColor(projectButton);
         },
         {
           message: 'Color in hover must be another',
