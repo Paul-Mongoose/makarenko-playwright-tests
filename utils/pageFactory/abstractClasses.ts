@@ -1,6 +1,6 @@
 import { Page, expect } from '@playwright/test';
 import { Locator } from 'playwright-core';
-import { LOCALIZATION } from '@data/enums.data';
+import { LOCALIZATION } from '../../helpers/testData';
 
 abstract class Assert {
   async checkTextContain(

@@ -1,6 +1,11 @@
 import { expect } from '@playwright/test';
-import { HEADER_BUTTONS, LANGUAGES, LOCALIZATION, USER } from '../../data';
 import { Component } from '../abstractClasses';
+import {
+  HEADER_BUTTONS,
+  LANGUAGES,
+  LOCALIZATION,
+  USER,
+} from '../../../helpers/testData';
 
 export class HeaderComponent extends Component {
   private HEADER_ELEMENT = this.page.locator('site-header .container');

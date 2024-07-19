@@ -1,7 +1,7 @@
 import { URLS } from '@data/urls.data';
 import { ILoginBody, IResponse } from '@interfaces/ICommon';
 import { APIRequestContext, request } from '@playwright/test';
-import { parseResponse } from '../utils';
+import { parseResponse } from '../index';
 
 export class ServiceApi {
   private baseUrl = URLS.base;

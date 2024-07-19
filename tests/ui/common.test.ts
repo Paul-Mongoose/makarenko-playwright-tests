@@ -6,7 +6,7 @@ import {
   LOCALIZATION,
   URLS,
   USER,
-} from '@data/index';
+} from '../../helpers/testData';
 
 test.beforeEach(async ({ mainPage }) => {
   await mainPage.goto();
@@ -24,12 +24,12 @@ test.describe('Localizify common tests', () => {
     await mainPage.header.LOGIN_MODAL_BUTTON.click();
 
     // Assert
-    // Test login api request
+    // Testing login api request
     expect((await loginRequestPromise).postData()).toBe(
       `{"email":"${USER.email}","password":"${USER.password}"}`,
     );
 
-    // Test the user is logged
+    // Testing the user is logged
     await expect(mainPage.header.USER_NAME_DISPLAY).toHaveText(USER.name);
   });
 
