@@ -1,7 +1,7 @@
 import test from '@lib/BaseTest';
-import { URLS } from '@data/urls.data';
 import { expect } from '@playwright/test';
 import { mockResponse } from '../../utils/mocking.utils';
+import { URLS } from '../../helpers/testData';
 
 test.beforeEach(async ({ mainPage }) => {
   await mainPage.goto();

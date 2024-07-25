@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { ServiceApi } from '../../api';
-import { USER } from '@data/index';
 import { userDataSchema, verifyJoiSchemas } from '../../utils';
+import { ServiceApi } from '../../utils/apiService';
+import { test, expect } from '@playwright/test';
+import { USER } from '../../helpers/testData';
 
 test.describe('Localizify Api tests', () => {
   const serviceApi = new ServiceApi();

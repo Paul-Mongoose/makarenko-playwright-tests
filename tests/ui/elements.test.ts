@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import test from '@lib/BaseTest';
-import { LANGUAGES, MENU_ITEMS, USER } from '@data/index';
 import { getElementColor } from '../../utils';
+import { LANGUAGES, MENU_ITEMS, USER } from '../../helpers/testData';
 
 test.beforeEach(async ({ mainPage }) => {
   await mainPage.goto();
